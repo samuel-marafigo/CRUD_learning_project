@@ -15,20 +15,24 @@ def estudantes():
         print('(3) Atualizar.')
         print('(4) Excluir.')
         print('(9) Voltar ao menu principal.')
-        opcao = int(input('Escolha uma opção: '))
+        try:
+            opcao = int(input('Escolha uma opção: '))
+            if opcao == 1:
+                incluir()
+            elif opcao == 2:
+                listar()
+            elif opcao == 3:
+                atualizar()
+            elif opcao == 4:
+                excluir()
+            elif opcao == 9:
+                break
+            else:
+                print('Opção inválida!')
+        except ValueError:
+            print('Opção inválida! Você precisar escolher um *número*.')
+            time.sleep(1)
 
-        if opcao == 1:
-            incluir()
-        elif opcao == 2:
-            listar()
-        elif opcao == 3:
-            atualizar()
-        elif opcao == 4:
-            excluir()
-        elif opcao == 9:
-            break
-        else:
-            print('Opção inválida!')
 
 def professores():
     while True:
@@ -37,20 +41,23 @@ def professores():
         print('(3) Atualizar.')
         print('(4) Excluir.')
         print('(9) Voltar ao menu principal.')
-        opcao = int(input('Escolha uma opção: '))
-
-        if opcao == 1:
-            incluir()
-        elif opcao == 2:
-            listar()
-        elif opcao == 3:
-            atualizar()
-        elif opcao == 4:
-            excluir()
-        elif opcao == 9:
-            break
-        else:
-            print('Opção inválida!')
+        try:
+            opcao = int(input('Escolha uma opção: '))
+            if opcao == 1:
+                incluir()
+            elif opcao == 2:
+                listar()
+            elif opcao == 3:
+                atualizar()
+            elif opcao == 4:
+                excluir()
+            elif opcao == 9:
+                break
+            else:
+                print('Opção inválida!')
+        except ValueError:
+            print('Opção inválida! Você precisar escolher um *número*.')
+            time.sleep(1)
 
 def matriculas():
     while True:
@@ -59,20 +66,23 @@ def matriculas():
         print('(3) Atualizar.')
         print('(4) Excluir.')
         print('(9) Voltar ao menu principal.')
-        opcao = int(input('Escolha uma opção: '))
-
-        if opcao == 1:
-            incluir()
-        elif opcao == 2:
-            listar()
-        elif opcao == 3:
-            atualizar()
-        elif opcao == 4:
-            excluir()
-        elif opcao == 9:
-            break
-        else:
-            print('Opção inválida!')
+        try:
+            opcao = int(input('Escolha uma opção: '))
+            if opcao == 1:
+                incluir()
+            elif opcao == 2:
+                listar()
+            elif opcao == 3:
+                atualizar()
+            elif opcao == 4:
+                excluir()
+            elif opcao == 9:
+                break
+            else:
+                print('Opção inválida!')
+        except ValueError:
+            print('Opção inválida! Você precisar escolher um *número*.')
+            time.sleep(1)
 
 
 def disciplinas():
@@ -82,21 +92,23 @@ def disciplinas():
         print('(3) Atualizar.')
         print('(4) Excluir.')
         print('(9) Voltar ao menu principal.')
-        opcao = int(input('Escolha uma opção: '))
-
-        if opcao == 1:
-            incluir()
-        elif opcao == 2:
-            listar()
-        elif opcao == 3:
-            atualizar()
-        elif opcao == 4:
-            excluir()
-        elif opcao == 9:
-            break
-        else:
-            print('Opção inválida!')
-
+        try:
+            opcao = int(input('Escolha uma opção: '))
+            if opcao == 1:
+                incluir()
+            elif opcao == 2:
+                listar()
+            elif opcao == 3:
+                atualizar()
+            elif opcao == 4:
+                excluir()
+            elif opcao == 9:
+                break
+            else:
+                print('Opção inválida!')
+        except ValueError:
+            print('Opção inválida! Você precisar escolher um *número*.')
+            time.sleep(1)
 
 def turmas():
     while True:
@@ -105,20 +117,23 @@ def turmas():
         print('(3) Atualizar.')
         print('(4) Excluir.')
         print('(9) Voltar ao menu principal.')
-        opcao = int(input('Escolha uma opção: '))
-
-        if opcao == 1:
-            incluir()
-        elif opcao == 2:
-            listar()
-        elif opcao == 3:
-            atualizar()
-        elif opcao == 4:
-            excluir()
-        elif opcao == 9:
-            break
-        else:
-            print('Opção inválida!')
+        try:
+            opcao = int(input('Escolha uma opção: '))
+            if opcao == 1:
+                incluir()
+            elif opcao == 2:
+                listar()
+            elif opcao == 3:
+                atualizar()
+            elif opcao == 4:
+                excluir()
+            elif opcao == 9:
+                break
+            else:
+                print('Opção inválida!')
+        except ValueError:
+            print('Opção inválida! Você precisar escolher um *número*.')
+            time.sleep(1)
 
 def incluir():
     print('Você escolheu: Incluir')
@@ -138,35 +153,39 @@ def excluir():
 
 while True:
     menu_principal()
-    opcao = int(input('Escolha uma opção: '))
+    try:
+        opcao = int(input('Escolha uma opção: '))
+        if opcao == 1:
+            print('Você escolheu gerenciar: Estudantes')
+            time.sleep(1)
+            estudantes()
+        elif opcao == 2:
+            print('Você escolheu gerenciar: Professores')
+            time.sleep(1)
+            professores()
+        elif opcao == 3:
+            print('Você escolheu gerenciar: Disciplinas')
+            time.sleep(1)
+            disciplinas()
+        elif opcao == 4:
+            print('Você escolheu gerenciar: Turmas')
+            time.sleep(1)
+            turmas()
+        elif opcao == 5:
+            print('Você escolheu gerenciar: Matrículas')
+            time.sleep(1)
+            matriculas()
+        elif opcao == 9:
+            exit()
+        else:
+            print('Opção inválida!')
+            time.sleep(1)
+            print('Retornando ao menu principal...')
+            time.sleep(1)
+    except ValueError:
+        print('Opção inválida! Você precisar escolher um *número*.')
+        time.sleep(1)
 
-    if opcao == 1:
-        print('Você escolheu gerenciar: Estudantes')
-        time.sleep(1)
-        estudantes()
-    elif opcao == 2:
-        print('Você escolheu gerenciar: Professores')
-        time.sleep(1)
-        professores()
-    elif opcao == 3:
-        print('Você escolheu gerenciar: Disciplinas')
-        time.sleep(1)
-        disciplinas()
-    elif opcao == 4:
-        print('Você escolheu gerenciar: Turmas')
-        time.sleep(1)
-        turmas()
-    elif opcao == 5:
-        print('Você escolheu gerenciar: Matrículas')
-        time.sleep(1)
-        matriculas()
-    elif opcao == 9:
-        exit()
-    else:
-        print('Opção inválida!')
-        time.sleep(1)
-        print('Retornando ao menu principal...')
-        time.sleep(1)
 
 
 
