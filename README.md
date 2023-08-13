@@ -29,7 +29,7 @@ This project is licensed under the MIT License
 5. Contact information
 
     
-Any kind of questions, comments or requests is always welcome!
+All kinds of feedback, comments or requests are always welcome!
 You may reach me through the following:
 Email: swmarafigo@gmail.com // Linkedin: https://www.linkedin.com/in/swmarafigo/
 
@@ -38,5 +38,8 @@ Email: swmarafigo@gmail.com // Linkedin: https://www.linkedin.com/in/swmarafigo/
 
     
 Version 0.1.0 - Initial release with the basic menu layout. No functions implemented yet.
+
 Version 0.1.1 - Added a try-except block around all user input sections in the main.py file. This follows the EAFP (Easier to Ask for Forgiveness than Permission) principle, ensuring that the program will not crash if a user enters anything other than an integer when selecting options in the CRUD menu.
+
+Version 0.2.0 - "Include" and "list" functions added at the student's menu in main.py according to course schedule. Created placeholder message for functions that are still being implemented. Removed redundant menu options. Now, any option that still hasn't been implemented will display a placeholder message telling the user it is still under development.
    
