@@ -1,7 +1,7 @@
 1. Introduction
 
    
-This project is part of the Raciocínio Computacional (Computational Reasoning) course in the Software Analysis and Development program I am taking. The main objective of the course is to instill basic programming principles and culminate in the development of a CRUD (Create, Retrieve, Update, Delete) system following the course guidelines.
+This project is part of the Raciocínio Computacional (Computational Reasoning) course in the Systems Analysis and Development program I am taking. The main objective of the course is to instill basic programming principles and culminate in the development of a CRUD (Create, Retrieve, Update, Delete) system following the course guidelines.
 Since I am Brazilian, and the course guidelines are written in Portuguese, the naming and commenting in the code, as well as the interface, will be in Brazilian Portuguese. However, other documentation, including this ReadMe and commit messages, will be in English.
 The purpose of this repository is to showcase my learning process through different versions and to mature my skills in a Git environment.
 
