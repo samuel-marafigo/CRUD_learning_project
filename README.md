@@ -34,7 +34,7 @@ You may reach me through the following:
 Email: swmarafigo@gmail.com // Linkedin: https://www.linkedin.com/in/swmarafigo/
 
 
-16. Changelog
+6. Changelog
 
     
 Version 0.1.0 - Initial release with the basic menu layout. No functions implemented yet.
