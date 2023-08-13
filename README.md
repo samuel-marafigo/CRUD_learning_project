@@ -42,4 +42,6 @@ Version 0.1.0 - Initial release with the basic menu layout. No functions impleme
 Version 0.1.1 - Added a try-except block around all user input sections in the main.py file. This follows the EAFP (Easier to Ask for Forgiveness than Permission) principle, ensuring that the program will not crash if a user enters anything other than an integer when selecting options in the CRUD menu.
 
 Version 0.2.0 - "Include" and "list" functions added at the student's menu in main.py according to course schedule. Created placeholder message for functions that are still being implemented. Removed redundant menu options. Now, any option that still hasn't been implemented will display a placeholder message telling the user it is still under development.
+
+Version 0.2.1 - Refactored the menu functions, making it modular, separating layout and logic functions. Introduced a reusable user input handling. Improved syntax in the listar() function.
    
