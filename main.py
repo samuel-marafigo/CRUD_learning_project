@@ -3,7 +3,7 @@ import time
 estudantes = []  # cria lista para registro de estudantes
 
 
-def menu_principal():  # layout e lógica do menu principal
+def menu_principal_layout():  # layout do menu principal
     print('=== MENU PRINCIPAL ===')
     print('(1) Gerenciar estudantes.')
     print('(2) Gerenciar professores.')
@@ -11,12 +11,16 @@ def menu_principal():  # layout e lógica do menu principal
     print('(4) Gerenciar turmas.')
     print('(5) Gerenciar matrículas.')
     print('(9) Sair.')
-    try:
-        opcao = int(input('Escolha uma opção: '))
+
+
+def menu_principal_logica():  # lógica do menu principal, buscando separar lógica e design
+    while True:
+        menu_principal_layout()  # layout dentro do loop para reprintar o menu se opção inválida
+        opcao = escolha_do_usuario()
         if opcao == 1:
             print('Você escolheu gerenciar: Estudantes')
             time.sleep(1)
-            menu_estudantes()
+            menu_estudantes_logica()
         elif opcao == 2:
             desenvolvimento()
         elif opcao == 3:
@@ -32,35 +36,33 @@ def menu_principal():  # layout e lógica do menu principal
             time.sleep(1)
             print('Retornando ao menu principal...')
             time.sleep(1)
-    except ValueError:  # adicionado um block de try-except para não quebrar o código caso o usuário não digite um int.
-        print('Opção inválida! Você precisar escolher um *número*.')
-        time.sleep(1)
 
 
-def menu_estudantes():  # layout e lógica do menu de operações - estudantes
+def menu_estudantes_layout():  # layout menu de operações - estudantes
+    print('=== ESTUDANTES ===')
+    print('(1) Incluir.')
+    print('(2) Listar.')
+    print('(3) Atualizar.')
+    print('(4) Excluir.')
+    print('(9) Voltar ao menu principal.')
+
+
+def menu_estudantes_logica():  # lógica menu de operações - estudantes
     while True:
-        print('(1) Incluir.')
-        print('(2) Listar.')
-        print('(3) Atualizar.')
-        print('(4) Excluir.')
-        print('(9) Voltar ao menu principal.')
-        try:
-            opcao = int(input('Escolha uma opção: '))
-            if opcao == 1:
-                incluir()
-            elif opcao == 2:
-                listar()
-            elif opcao == 3:
-                desenvolvimento()
-            elif opcao == 4:
-                desenvolvimento()
-            elif opcao == 9:
-                break
-            else:
-                print('Opção inválida!')
-        except ValueError:
-            print('Opção inválida! Você precisar escolher um *número*.')
-            time.sleep(1)
+        menu_estudantes_layout()
+        opcao = escolha_do_usuario()
+        if opcao == 1:
+            incluir()
+        elif opcao == 2:
+            listar()
+        elif opcao == 3:
+            desenvolvimento()
+        elif opcao == 4:
+            desenvolvimento()
+        elif opcao == 9:
+            return
+        else:
+            print('Opção inválida!')
 
 
 def desenvolvimento():  # placeholder das funções ainda não implementadas
@@ -80,13 +82,25 @@ def listar():  # operação de listagem
     print('Você escolheu: Listar')
     if len(estudantes) > 0:
         print('=== LISTA ===')
-        for i in range(len(estudantes)):
-            print(estudantes[i])
+        for estudante in estudantes:
+            print(estudante)
         time.sleep(2)
     else:
         print('Lista vazia...')
         time.sleep(1)
 
 
-while True:  # loop principal
-    menu_principal()
+def escolha_do_usuario():  # lógica do input dos menus - passível de reutilização
+    try:
+        return int(input('Escolha uma opção: '))
+    except ValueError:  # adicionado um block de try-except para não quebrar o código caso o usuário digite um não-int.
+        print('Você precisa escolher um *número*.')
+        time.sleep(1)
+
+
+def menu_principal(): #loop principal
+    while True:
+        menu_principal_logica()
+
+
+menu_principal()
