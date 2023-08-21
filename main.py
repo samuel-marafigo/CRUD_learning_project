@@ -1,6 +1,7 @@
 import time
 
-estudantes = []  # cria lista para registro de estudantes
+estudantes = []  # cria listas para registro de dados
+
 
 
 def menu_principal_layout():  # layout do menu principal
@@ -11,6 +12,7 @@ def menu_principal_layout():  # layout do menu principal
     print('(4) Gerenciar turmas.')
     print('(5) Gerenciar matrículas.')
     print('(9) Sair.')
+
 
 
 def menu_principal_logica():  # lógica do menu principal, buscando separar lógica e design
@@ -52,38 +54,38 @@ def menu_estudantes_logica():  # lógica menu de operações - estudantes
         menu_estudantes_layout()
         opcao = escolha_do_usuario()
         if opcao == 1:
-            incluir()
+            incluir_dados(estudantes)
         elif opcao == 2:
-            listar()
+            listar_dados(estudantes)
         elif opcao == 3:
-            desenvolvimento()
+            placeholder_em_desenvolvimento()
         elif opcao == 4:
-            desenvolvimento()
+            placeholder_em_desenvolvimento()
         elif opcao == 9:
             return
         else:
             print('Opção inválida!')
 
 
-def desenvolvimento():  # placeholder das funções ainda não implementadas
+def placeholder_em_desenvolvimento():  # placeholder das funções ainda não implementadas
     print('Em desenvolvimento')
     time.sleep(1)
     print('Retornando ao menu anterior...')
     time.sleep(1)
 
 
-def incluir():  # operação de inclusão
+def incluir_dados(base_de_dados):  # operação de inclusão
     print('Você escolheu: Incluir')
-    nome_estudante = input('Informe o nome do estudante: ')
-    estudantes.append(nome_estudante)
+    dados = input('Informe o dado a ser adicionado: ')
+    base_de_dados.append(dados)
 
 
-def listar():  # operação de listagem
+def listar_dados(base_de_dados):  # operação de listagem
     print('Você escolheu: Listar')
-    if len(estudantes) > 0:
+    if len(base_de_dados) > 0:
         print('=== LISTA ===')
-        for estudante in estudantes:
-            print(estudante)
+        for dados in base_de_dados:
+            print(dados)
         time.sleep(2)
     else:
         print('Lista vazia...')
