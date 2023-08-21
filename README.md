@@ -44,4 +44,6 @@ Version 0.1.1 - Added a try-except block around all user input sections in the m
 Version 0.2.0 - "Include" and "list" functions added at the student's menu in main.py according to course schedule. Created placeholder message for functions that are still being implemented. Removed redundant menu options. Now, any option that still hasn't been implemented will display a placeholder message telling the user it is still under development.
 
 Version 0.2.1 - Refactored the menu functions, making it modular, separating layout and logic functions. Introduced a reusable user input handling. Improved syntax in the listar() function.
+
+Version 0.2.2 - Refactored the Create (incluir_dados, formerly incluir) and Read (listar_dados, formerly listar) functions, making them reusable in the code through the use of arguments to select a database. Made the function names more descriptive.
    
