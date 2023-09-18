@@ -48,3 +48,5 @@ Version 0.2.1 - Refactored the menu functions, making it modular, separating lay
 Version 0.2.2 - Refactored the Create (incluir_dados, formerly incluir) and Read (listar_dados, formerly listar) functions, making them reusable in the code through the use of arguments to select a database. Made the function names more descriptive.
 
 Version 0.2.3 - Migrated from a list-based to a dictionary-based data structure. Added Update (atualizar_dados) and Remove (remover_dados) functions.
+
+Version 0.2.4 - Added JSON support.

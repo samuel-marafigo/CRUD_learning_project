@@ -1,8 +1,21 @@
 import time
+import json
 
-dicionario_estudantes = {}  # cria dicionário para registro de dados
+def carregar_de_json(nome_do_json):
+    try:
+        with open(nome_do_json, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
 
+def salvar_para_json(dados_do_json, nome_do_json):
+    try:
+        with open(nome_do_json, 'w') as f:
+            json.dump(dados_do_json, f)
+    except Exception as e:
+        print(f"Ocorreu um erro ao salvar os dados: {e}")
 
+dicionario_estudantes = carregar_de_json("estudantes.json")
 
 def menu_principal_layout():  # layout do menu principal
     print('=== MENU PRINCIPAL ===')
@@ -85,6 +98,7 @@ def incluir_dados():
     cpf = input('Informe o CPF do estudante: ')
     estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
     dicionario_estudantes[codigo] = estudante
+    salvar_para_json(dicionario_estudantes, "estudantes.json")
     print(f"Estudante adicionado com o código {codigo}.")
 
 
@@ -139,6 +153,7 @@ def escolha_do_usuario():  # lógica do input dos menus - passível de reutiliza
 def menu_principal(): #loop principal
     while True:
         menu_principal_logica()
+
 
 
 menu_principal()
