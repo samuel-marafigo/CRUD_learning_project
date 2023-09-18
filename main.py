@@ -1,6 +1,6 @@
 import time
 
-estudantes = []  # cria listas para registro de dados
+dicionario_estudantes = {}  # cria dicionário para registro de dados
 
 
 
@@ -24,13 +24,13 @@ def menu_principal_logica():  # lógica do menu principal, buscando separar lóg
             time.sleep(1)
             menu_estudantes_logica()
         elif opcao == 2:
-            desenvolvimento()
+            placeholder_em_desenvolvimento()
         elif opcao == 3:
-            desenvolvimento()
+            placeholder_em_desenvolvimento()
         elif opcao == 4:
-            desenvolvimento()
+            placeholder_em_desenvolvimento()
         elif opcao == 5:
-            desenvolvimento()
+            placeholder_em_desenvolvimento()
         elif opcao == 9:
             exit()
         else:
@@ -54,13 +54,13 @@ def menu_estudantes_logica():  # lógica menu de operações - estudantes
         menu_estudantes_layout()
         opcao = escolha_do_usuario()
         if opcao == 1:
-            incluir_dados(estudantes)
+            incluir_dados()
         elif opcao == 2:
-            listar_dados(estudantes)
+            listar_dados()
         elif opcao == 3:
-            placeholder_em_desenvolvimento()
+            atualizar_dados()
         elif opcao == 4:
-            placeholder_em_desenvolvimento()
+            excluir_dados()
         elif opcao == 9:
             return
         else:
@@ -74,22 +74,58 @@ def placeholder_em_desenvolvimento():  # placeholder das funções ainda não im
     time.sleep(1)
 
 
-def incluir_dados(base_de_dados):  # operação de inclusão
+def incluir_dados():
     print('Você escolheu: Incluir')
-    dados = input('Informe o dado a ser adicionado: ')
-    base_de_dados.append(dados)
+    if dicionario_estudantes:  # Hard-code do número do código para evitar duplicatas.
+        codigo = max(dicionario_estudantes.keys()) + 1
+    else:
+        codigo = 1
+    print(f'O código para este estudante será: #{codigo}')
+    nome = input('Informe o nome do estudante: ')
+    cpf = input('Informe o CPF do estudante: ')
+    estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
+    dicionario_estudantes[codigo] = estudante
+    print(f"Estudante adicionado com o código {codigo}.")
 
 
-def listar_dados(base_de_dados):  # operação de listagem
+def listar_dados():  # operação de listagem
     print('Você escolheu: Listar')
-    if len(base_de_dados) > 0:
+    if len(dicionario_estudantes) > 0:
         print('=== LISTA ===')
-        for dados in base_de_dados:
-            print(dados)
+        for dados in dicionario_estudantes:
+            print(dicionario_estudantes[dados])
         time.sleep(2)
     else:
         print('Lista vazia...')
         time.sleep(1)
+
+def atualizar_dados():
+    print('Você escolheu: Atualizar')
+    try:
+        codigo = int(input('Informe o código do estudante a ser atualizado: '))
+        if codigo in dicionario_estudantes:
+            print(f"Atualizando dados para o estudante com o código: {codigo}")
+            nome = input('Informe o novo nome do estudante: ')
+            cpf = input('Informe o novo CPF do estudante: ')
+            estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
+            dicionario_estudantes[codigo] = estudante
+            print(f"Estudante atualizado com sucesso!")
+        else:
+            print("Estudante com o código informado não encontrado.")
+    except ValueError:
+        print('O código deve ser um número inteiro.')
+
+def excluir_dados():
+    print('Você escolheu: Excluir')
+    try:
+        codigo = int(input('Informe o código do estudante a ser excluído: '))
+        if codigo in dicionario_estudantes:
+            del dicionario_estudantes[codigo]
+            print(f"Estudante com o código {codigo} foi excluído.")
+        else:
+            print("Estudante com o código informado não encontrado.")
+    except ValueError:
+        print('O código deve ser um número inteiro.')
 
 
 def escolha_do_usuario():  # lógica do input dos menus - passível de reutilização

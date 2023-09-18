@@ -46,4 +46,5 @@ Version 0.2.0 - "Include" and "list" functions added at the student's menu in ma
 Version 0.2.1 - Refactored the menu functions, making it modular, separating layout and logic functions. Introduced a reusable user input handling. Improved syntax in the listar() function.
 
 Version 0.2.2 - Refactored the Create (incluir_dados, formerly incluir) and Read (listar_dados, formerly listar) functions, making them reusable in the code through the use of arguments to select a database. Made the function names more descriptive.
-   
+
+Version 0.2.3 - Migrated from a list-based to a dictionary-based data structure. Added Update (atualizar_dados) and Remove (remover_dados) functions.
