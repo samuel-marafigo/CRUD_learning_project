@@ -50,3 +50,5 @@ Version 0.2.2 - Refactored the Create (incluir_dados, formerly incluir) and Read
 Version 0.2.3 - Migrated from a list-based to a dictionary-based data structure. Added Update (atualizar_dados) and Remove (remover_dados) functions.
 
 Version 0.2.4 - Added JSON support.
+
+Version 0.2.5 - Started transition transitioning to OOP. All the CRUD functions where migrated to a OperacoesCRUD class.

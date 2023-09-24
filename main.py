@@ -1,10 +1,71 @@
 import time
 import json
 
+class OperacoesCrud:
+    def __init__(self, base_de_dados):
+        self.base_de_dados = base_de_dados
+    def listar_dados(self):
+        print('Você escolheu: Listar')
+        if len(self.base_de_dados) > 0:
+            print('=== LISTA ===')
+            for dados in self.base_de_dados:
+                print(self.base_de_dados[dados])
+            time.sleep(2)
+        else:
+            print('Lista vazia...')
+            time.sleep(1)
+
+    def incluir_dados(self):
+        print('Você escolheu: Incluir')
+        if self.base_de_dados:
+            codigo = max(self.base_de_dados.keys()) + 1
+        else:
+            codigo = 1
+        print(f'O código para este estudante será: #{codigo}')
+        nome = input('Informe o nome do estudante: ')
+        cpf = input('Informe o CPF do estudante: ')
+        estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
+        self.base_de_dados[codigo] = estudante
+        salvar_para_json(self.base_de_dados, "estudantes.json")
+        print(f"Estudante adicionado com o código {codigo}.")
+
+    def atualizar_dados(self):
+        print('Você escolheu: Atualizar')
+        try:
+            codigo = int(input('Informe o código do estudante a ser atualizado: '))
+            if codigo in self.base_de_dados:
+                print(f"Atualizando dados para o estudante com o código: {codigo}")
+                nome = input('Informe o novo nome do estudante: ')
+                cpf = input('Informe o novo CPF do estudante: ')
+                estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
+                self.base_de_dados[codigo] = estudante
+                salvar_para_json(self.base_de_dados, "estudantes.json")
+                print(f"Estudante atualizado com sucesso!")
+            else:
+                print("Estudante com o código informado não encontrado.")
+        except ValueError:
+            print('O código deve ser um número inteiro.')
+
+    def excluir_dados(self):
+        print('Você escolheu: Excluir')
+        try:
+            codigo = int(input('Informe o código do estudante a ser excluído: '))
+            if codigo in self.base_de_dados:
+                del self.base_de_dados[codigo]
+                salvar_para_json(self.base_de_dados, "estudantes.json")
+                print(f"Estudante com o código {codigo} foi excluído.")
+            else:
+                print("Estudante com o código informado não encontrado.")
+        except ValueError:
+            print('O código deve ser um número inteiro.')
+
+
+
 def carregar_de_json(nome_do_json):
     try:
         with open(nome_do_json, 'r') as f:
-            return json.load(f)
+            dados = json.load(f)
+            return {int(k): v for k, v in dados.items()}
     except FileNotFoundError:
         return {}
 
@@ -65,15 +126,16 @@ def menu_estudantes_layout():  # layout menu de operações - estudantes
 def menu_estudantes_logica():  # lógica menu de operações - estudantes
     while True:
         menu_estudantes_layout()
+        operacao = OperacoesCrud(dicionario_estudantes)
         opcao = escolha_do_usuario()
         if opcao == 1:
-            incluir_dados()
+            operacao.incluir_dados()
         elif opcao == 2:
-            listar_dados()
+            operacao.listar_dados()
         elif opcao == 3:
-            atualizar_dados()
+            operacao.atualizar_dados()
         elif opcao == 4:
-            excluir_dados()
+            operacao.excluir_dados()
         elif opcao == 9:
             return
         else:
@@ -85,62 +147,6 @@ def placeholder_em_desenvolvimento():  # placeholder das funções ainda não im
     time.sleep(1)
     print('Retornando ao menu anterior...')
     time.sleep(1)
-
-
-def incluir_dados():
-    print('Você escolheu: Incluir')
-    if dicionario_estudantes:  # Hard-code do número do código para evitar duplicatas.
-        codigo = max(dicionario_estudantes.keys()) + 1
-    else:
-        codigo = 1
-    print(f'O código para este estudante será: #{codigo}')
-    nome = input('Informe o nome do estudante: ')
-    cpf = input('Informe o CPF do estudante: ')
-    estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
-    dicionario_estudantes[codigo] = estudante
-    salvar_para_json(dicionario_estudantes, "estudantes.json")
-    print(f"Estudante adicionado com o código {codigo}.")
-
-
-def listar_dados():  # operação de listagem
-    print('Você escolheu: Listar')
-    if len(dicionario_estudantes) > 0:
-        print('=== LISTA ===')
-        for dados in dicionario_estudantes:
-            print(dicionario_estudantes[dados])
-        time.sleep(2)
-    else:
-        print('Lista vazia...')
-        time.sleep(1)
-
-def atualizar_dados():
-    print('Você escolheu: Atualizar')
-    try:
-        codigo = int(input('Informe o código do estudante a ser atualizado: '))
-        if codigo in dicionario_estudantes:
-            print(f"Atualizando dados para o estudante com o código: {codigo}")
-            nome = input('Informe o novo nome do estudante: ')
-            cpf = input('Informe o novo CPF do estudante: ')
-            estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
-            dicionario_estudantes[codigo] = estudante
-            print(f"Estudante atualizado com sucesso!")
-        else:
-            print("Estudante com o código informado não encontrado.")
-    except ValueError:
-        print('O código deve ser um número inteiro.')
-
-def excluir_dados():
-    print('Você escolheu: Excluir')
-    try:
-        codigo = int(input('Informe o código do estudante a ser excluído: '))
-        if codigo in dicionario_estudantes:
-            del dicionario_estudantes[codigo]
-            print(f"Estudante com o código {codigo} foi excluído.")
-        else:
-            print("Estudante com o código informado não encontrado.")
-    except ValueError:
-        print('O código deve ser um número inteiro.')
-
 
 def escolha_do_usuario():  # lógica do input dos menus - passível de reutilização
     try:
